@@ -1,18 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { createElement, useState, useEffect, useRef } from 'react';
 
 const Island = ({ from, ...props }) => {
 	const element = useRef();
 	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		import('./' + from).then(el => {
-			element.current = el.default(props);
+			element.current = createElement(el.default, props, props.children);
 			setLoading(false);
 		});
 	}, [from]);
 
 	let initialElement = null;
+
 	if (window.SSR_PRELOAD_ISLANDS && window.SSR_PRELOAD_ISLANDS[from]) {
-		initialElement = window.SSR_PRELOAD_ISLANDS[from](props);
+		initialElement = createElement(
+			window.SSR_PRELOAD_ISLANDS[from],
+			props,
+			props.children
+		);
 	}
 
 	return (

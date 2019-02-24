@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default props => {
+const AsyncContent = props => {
+	const [content, setContent] = useState(null);
 	return (
-		<div style={{ color: props.color ? props.color : '#000' }}>
-			{props.children || 12}
+		<div
+			onClick={() => {
+				alert(12);
+				setContent(content + 'test-');
+			}}
+			style={{ color: props.color ? props.color : '#000' }}
+		>
+			{props.children || 12} {content}
 		</div>
 	);
 };
+
+export default AsyncContent;
