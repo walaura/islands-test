@@ -12,6 +12,7 @@ class App extends Component {
 			<div className="App">
 				<header>
 					<wrapper>
+						<Island from={'User'} />
 						<img src={logo} className="App-logo" alt="logo" />
 					</wrapper>
 				</header>

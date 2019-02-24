@@ -7,7 +7,15 @@ wrapper {
 
 header {
 	background: #005689;
+	color: #fff;
 	overflow: hidden;
+}
+
+header wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: row;
 }
 
 header wrapper img {
